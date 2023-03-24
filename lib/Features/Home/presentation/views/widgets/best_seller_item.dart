@@ -7,49 +7,52 @@ class BestSellerItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        height: 125,
-        child: Row(
-          children: [
-            const BestSellerItemImage(),
-            const SizedBox(
-              width: 30.0,
-            ),
-            Expanded(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  //book title
-                  const BestSellerItemTitle(),
-                  const SizedBox(
-                    height: 3.0,
-                  ),
-                  //auther name
-                  Text(
-                    'J.K. Rowling',
-                    style: Styles.text14,
-                  ),
-                  const SizedBox(
-                    height: 6.0,
-                  ),
-                  Row(
-                    children: const [
-                      //book price
-                      Text(
-                        '19.99 €',
-                        style: Styles.text20,
-                      ),
-                      Spacer(),
-                      //book rating
-                      BestSellerItemRating(),
-                    ],
-                  )
-                ],
+    return Padding(
+      padding: const EdgeInsets.only(left: 24.0, right: 24.0, bottom: 24.0),
+      child: SizedBox(
+          height: 125,
+          child: Row(
+            children: [
+              const BestSellerItemImage(),
+              const SizedBox(
+                width: 30.0,
               ),
-            )
-          ],
-        ));
+              Expanded(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    //book title
+                    const BestSellerItemTitle(),
+                    const SizedBox(
+                      height: 3.0,
+                    ),
+                    //author name
+                    Text(
+                      'J.K. Rowling',
+                      style: Styles.text14,
+                    ),
+                    const SizedBox(
+                      height: 6.0,
+                    ),
+                    Row(
+                      children: const [
+                        //book price
+                        Text(
+                          '19.99 €',
+                          style: Styles.text20,
+                        ),
+                        Spacer(),
+                        //book rating
+                        BestSellerItemRating(),
+                      ],
+                    )
+                  ],
+                ),
+              )
+            ],
+          )),
+    );
   }
 }
 
@@ -60,7 +63,7 @@ class BestSellerItemImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 2.05 / 3,
+      aspectRatio: 2.1 / 3,
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.0),
