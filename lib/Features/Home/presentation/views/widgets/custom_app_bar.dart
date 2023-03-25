@@ -1,27 +1,16 @@
-import 'package:bookly/core/utile/assets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
-PreferredSizeWidget customAppBar() {
+PreferredSizeWidget customAppBar(
+    {required Widget actionOne, required Widget title}) {
   return AppBar(
     automaticallyImplyLeading: false,
     backgroundColor: Colors.transparent,
     elevation: 0,
-    title: SvgPicture.asset(
-      AssetsData.logo,
-      width: 75,
-      height: 18.1,
-    ),
+    title: title,
     actions: [
-      IconButton(
-          onPressed: () {},
-          icon: SvgPicture.asset(
-            AssetsData.searchIcon,
-            width: 25,
-            height: 25,
-          )),
+      actionOne,
       const SizedBox(
-        width: 8.0,
+        width: 12.0,
       )
     ],
   );

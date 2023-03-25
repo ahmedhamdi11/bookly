@@ -1,6 +1,8 @@
 import 'package:bookly/constants.dart';
+import 'package:bookly/core/utile/app_router.dart';
 import 'package:bookly/core/utile/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class BestSellerItem extends StatelessWidget {
   const BestSellerItem({super.key});
@@ -9,49 +11,54 @@ class BestSellerItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 24.0, right: 24.0, bottom: 24.0),
-      child: SizedBox(
-          height: 125,
-          child: Row(
-            children: [
-              const BestSellerItemImage(),
-              const SizedBox(
-                width: 30.0,
-              ),
-              Expanded(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    //book title
-                    const BestSellerItemTitle(),
-                    const SizedBox(
-                      height: 3.0,
-                    ),
-                    //author name
-                    Text(
-                      'J.K. Rowling',
-                      style: Styles.text14,
-                    ),
-                    const SizedBox(
-                      height: 6.0,
-                    ),
-                    Row(
-                      children: const [
-                        //book price
-                        Text(
-                          '19.99 €',
-                          style: Styles.text20,
-                        ),
-                        Spacer(),
-                        //book rating
-                        BestSellerItemRating(),
-                      ],
-                    )
-                  ],
+      child: InkWell(
+        onTap: () {
+          GoRouter.of(context).push(AppRouter.bookDetailsViewPath);
+        },
+        child: SizedBox(
+            height: 125,
+            child: Row(
+              children: [
+                const BestSellerItemImage(),
+                const SizedBox(
+                  width: 30.0,
                 ),
-              )
-            ],
-          )),
+                Expanded(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      //book title
+                      const BestSellerItemTitle(),
+                      const SizedBox(
+                        height: 3.0,
+                      ),
+                      //author name
+                      Text(
+                        'J.K. Rowling',
+                        style: Styles.text14,
+                      ),
+                      const SizedBox(
+                        height: 6.0,
+                      ),
+                      Row(
+                        children: const [
+                          //book price
+                          Text(
+                            '19.99 €',
+                            style: Styles.text20,
+                          ),
+                          Spacer(),
+                          //book rating
+                          BestSellerItemRating(),
+                        ],
+                      )
+                    ],
+                  ),
+                )
+              ],
+            )),
+      ),
     );
   }
 }
