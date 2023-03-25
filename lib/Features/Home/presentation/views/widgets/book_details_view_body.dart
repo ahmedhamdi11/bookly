@@ -1,6 +1,7 @@
 import 'package:bookly/Features/Home/presentation/views/widgets/book_actions.dart';
 import 'package:bookly/Features/Home/presentation/views/widgets/book_image.dart';
 import 'package:bookly/Features/Home/presentation/views/widgets/book_rating.dart';
+import 'package:bookly/Features/Home/presentation/views/widgets/similar_books_list_view.dart';
 import 'package:bookly/core/utile/styles.dart';
 import 'package:flutter/material.dart';
 
@@ -43,7 +44,26 @@ class BookDetailsViewBody extends StatelessWidget {
           const SizedBox(
             height: 37.0,
           ),
-          const BookActions()
+          const BookActions(),
+          const SizedBox(
+            height: 48.0,
+          ),
+          const Padding(
+            padding: EdgeInsets.only(left: 30),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'You can also like',
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 16.0,
+          ),
+          const SimilarBooksListView(),
         ],
       ),
     );
