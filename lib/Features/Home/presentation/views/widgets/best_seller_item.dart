@@ -1,3 +1,4 @@
+import 'package:bookly/Features/Home/presentation/views/widgets/book_image.dart';
 import 'package:bookly/constants.dart';
 import 'package:bookly/core/utile/app_router.dart';
 import 'package:bookly/core/utile/styles.dart';
@@ -19,7 +20,9 @@ class BestSellerItem extends StatelessWidget {
             height: 125,
             child: Row(
               children: [
-                const BestSellerItemImage(),
+                const BookImage(
+                  borderRadius: 8.0,
+                ),
                 const SizedBox(
                   width: 30.0,
                 ),
