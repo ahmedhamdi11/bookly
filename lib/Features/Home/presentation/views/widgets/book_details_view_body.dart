@@ -1,3 +1,4 @@
+import 'package:bookly/Features/Home/presentation/views/widgets/book_actions.dart';
 import 'package:bookly/Features/Home/presentation/views/widgets/book_image.dart';
 import 'package:bookly/Features/Home/presentation/views/widgets/book_rating.dart';
 import 'package:bookly/core/utile/styles.dart';
@@ -13,7 +14,7 @@ class BookDetailsViewBody extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(
-            height: 34,
+            height: 30,
           ),
           SizedBox(
             width: MediaQuery.of(context).size.width * 0.45,
@@ -22,7 +23,7 @@ class BookDetailsViewBody extends StatelessWidget {
           const SizedBox(
             height: 40.0,
           ),
-          Text(
+          const Text(
             'The Jungle Book',
             style: Styles.text30,
           ),
@@ -38,7 +39,11 @@ class BookDetailsViewBody extends StatelessWidget {
           const SizedBox(
             height: 14.0,
           ),
-          const BookRating()
+          const BookRating(),
+          const SizedBox(
+            height: 37.0,
+          ),
+          const BookActions()
         ],
       ),
     );
