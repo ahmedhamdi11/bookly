@@ -32,7 +32,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_svg: ^2.0.4
-  get: ^4.6.5
+  go_router: ^6.5.0
   google_fonts: ^4.0.3
 
 dev_dependencies:
@@ -63,7 +63,7 @@ flutter:
   # example:
   fonts:
     - family: GT Sectra Fine Regular
-      fonts: 
+      fonts:
         - asset: assets/fonts/GT Sectra Fine Regular.ttf
   #   - family: Trajan Pro
   #     fonts:
