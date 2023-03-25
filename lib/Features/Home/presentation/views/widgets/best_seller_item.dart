@@ -1,4 +1,5 @@
 import 'package:bookly/Features/Home/presentation/views/widgets/book_image.dart';
+import 'package:bookly/Features/Home/presentation/views/widgets/book_rating.dart';
 import 'package:bookly/constants.dart';
 import 'package:bookly/core/utile/app_router.dart';
 import 'package:bookly/core/utile/styles.dart';
@@ -53,7 +54,7 @@ class BestSellerItem extends StatelessWidget {
                           ),
                           Spacer(),
                           //book rating
-                          BestSellerItemRating(),
+                          BookRating(),
                         ],
                       )
                     ],
@@ -61,28 +62,6 @@ class BestSellerItem extends StatelessWidget {
                 )
               ],
             )),
-      ),
-    );
-  }
-}
-
-////////book image////////
-class BestSellerItemImage extends StatelessWidget {
-  const BestSellerItemImage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 2.1 / 3,
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.0),
-          image: const DecorationImage(
-              image: NetworkImage(
-                'https://www.insightpublica.com/assets/img/books/insight_publica_book217_image_1_.5855009-jpg',
-              ),
-              fit: BoxFit.fill),
-        ),
       ),
     );
   }
@@ -104,37 +83,6 @@ class BestSellerItemTitle extends StatelessWidget {
         maxLines: 2,
         overflow: TextOverflow.ellipsis,
       ),
-    );
-  }
-}
-
-/////book rating////////
-class BestSellerItemRating extends StatelessWidget {
-  const BestSellerItemRating({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        const Icon(
-          Icons.star,
-          color: Color(0xffFFDD4F),
-        ),
-        const SizedBox(
-          width: 3.0,
-        ),
-        const Text(
-          '4.8',
-          style: Styles.text16,
-        ),
-        const SizedBox(
-          width: 9.0,
-        ),
-        Text(
-          '(2390)',
-          style: Styles.text14,
-        )
-      ],
     );
   }
 }
