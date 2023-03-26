@@ -9,48 +9,42 @@ class BookDetailsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
+    return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
-      slivers: [
-        SliverFillRemaining(
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 30,
-              ),
-
-              //book image
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.45,
-                child: const BookImage(),
-              ),
-              const SizedBox(
-                height: 40.0,
-              ),
-
-              //book details (title,author,rating)
-              const BookDetails(),
-              const SizedBox(
-                height: 37.0,
-              ),
-
-              //book actions (buy,free previw)button
-              const BookActions(),
-              const Expanded(
-                child: SizedBox(
-                  height: 48.0,
-                ),
-              ),
-
-              //similar books (title,BookslistView)
-              const SimilarBooks(),
-              const SizedBox(
-                height: 40.0,
-              ),
-            ],
+      child: Column(
+        children: [
+          const SizedBox(
+            height: 30,
           ),
-        )
-      ],
+
+          //book image
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 0.45,
+            child: const BookImage(),
+          ),
+          const SizedBox(
+            height: 40.0,
+          ),
+
+          //book details (title,author,rating)
+          const BookDetails(),
+          const SizedBox(
+            height: 37.0,
+          ),
+
+          //book actions (buy,free previw)button
+          const BookActions(),
+          const SizedBox(
+            height: 48.0,
+          ),
+
+          //similar books (title,BookslistView)
+          const SimilarBooks(),
+          const SizedBox(
+            height: 40.0,
+          ),
+        ],
+      ),
     );
   }
 }
