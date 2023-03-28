@@ -17,7 +17,8 @@ class ServerFailure extends Failure {
       case DioErrorType.receiveTimeout:
         return ServerFailure('Receive Timeout');
       case DioErrorType.badCertificate:
-        return ServerFailure('Bad Certificate');
+        return ServerFailure(
+            'The connection to the server could not be established');
       case DioErrorType.badResponse:
         return ServerFailure.fromResponse(
             dioError.response!.statusCode!, dioError.response!.data);
