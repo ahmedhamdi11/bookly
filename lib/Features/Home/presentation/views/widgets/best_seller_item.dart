@@ -1,3 +1,4 @@
+import 'package:bookly/Features/Home/data/models/book_model/book_model.dart';
 import 'package:bookly/Features/Home/presentation/views/widgets/book_image.dart';
 import 'package:bookly/Features/Home/presentation/views/widgets/book_rating.dart';
 import 'package:bookly/constants.dart';
@@ -7,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class BestSellerItem extends StatelessWidget {
-  const BestSellerItem({super.key});
-
+  const BestSellerItem({super.key, required this.book});
+  final BookModel book;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -21,9 +22,9 @@ class BestSellerItem extends StatelessWidget {
             height: 125,
             child: Row(
               children: [
-                const BookImage(
-                  borderRadius: 8.0,
-                ),
+                BookImage(
+                    borderRadius: 8.0,
+                    imageUrl: book.volumeInfo!.imageLinks?.thumbnail!),
                 const SizedBox(
                   width: 30.0,
                 ),
@@ -33,28 +34,33 @@ class BestSellerItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       //book title
-                      const BestSellerItemTitle(),
+                      BestSellerItemTitle(
+                        title: book.volumeInfo!.title!,
+                      ),
                       const SizedBox(
                         height: 3.0,
                       ),
                       //author name
                       Text(
-                        'J.K. Rowling',
+                        book.volumeInfo!.authors![0],
                         style: Styles.text14,
                       ),
                       const SizedBox(
                         height: 6.0,
                       ),
                       Row(
-                        children: const [
+                        children: [
                           //book price
-                          Text(
-                            '19.99 €',
+                          const Text(
+                            'free',
                             style: Styles.text20,
                           ),
-                          Spacer(),
+                          const Spacer(),
                           //book rating
-                          BookRating(),
+                          BookRating(
+                            rate: book.volumeInfo!.averageRating ?? '-',
+                            count: book.volumeInfo!.ratingsCount ?? 0,
+                          ),
                         ],
                       )
                     ],
@@ -69,14 +75,14 @@ class BestSellerItem extends StatelessWidget {
 
 ////////book title///////////
 class BestSellerItemTitle extends StatelessWidget {
-  const BestSellerItemTitle({super.key});
-
+  const BestSellerItemTitle({super.key, required this.title});
+  final String title;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.5,
       child: Text(
-        'Harry Potter and the Goblet of Fire',
+        title,
         style: Styles.text20.copyWith(
           fontFamily: kGTSectraFineFontFamily,
         ),

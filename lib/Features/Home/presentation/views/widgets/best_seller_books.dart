@@ -15,8 +15,10 @@ class BestSellerBooks extends StatelessWidget {
               padding: EdgeInsets.zero,
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              itemCount: 20,
-              itemBuilder: (context, index) => const BestSellerItem());
+              itemCount: state.books.length,
+              itemBuilder: (context, index) => BestSellerItem(
+                    book: state.books[index],
+                  ));
         } else if (state is NewestBooksFailureState) {
           return Text(state.errMessage);
         } else {

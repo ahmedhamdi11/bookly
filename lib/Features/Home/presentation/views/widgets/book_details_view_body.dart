@@ -20,7 +20,10 @@ class BookDetailsViewBody extends StatelessWidget {
           //book image
           SizedBox(
             width: MediaQuery.of(context).size.width * 0.45,
-            child: const BookImage(),
+            child: const BookImage(
+              imageUrl:
+                  'https://cor-cdn-static.bibliocommons.com/assets/default_covers/icon-book-93409e4decdf10c55296c91a97ac2653.png',
+            ),
           ),
           const SizedBox(
             height: 40.0,

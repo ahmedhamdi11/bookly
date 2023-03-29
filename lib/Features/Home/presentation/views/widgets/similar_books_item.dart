@@ -10,6 +10,8 @@ class SimilarBooksItem extends StatelessWidget {
       padding: EdgeInsets.only(right: 10.0),
       child: BookImage(
         borderRadius: 8.0,
+        imageUrl:
+            'https://cor-cdn-static.bibliocommons.com/assets/default_covers/icon-book-93409e4decdf10c55296c91a97ac2653.png',
       ),
     );
   }
