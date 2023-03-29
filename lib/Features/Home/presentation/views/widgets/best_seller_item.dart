@@ -24,7 +24,7 @@ class BestSellerItem extends StatelessWidget {
               children: [
                 BookImage(
                     borderRadius: 8.0,
-                    imageUrl: book.volumeInfo!.imageLinks?.thumbnail!),
+                    imageUrl: book.volumeInfo.imageLinks?.thumbnail),
                 const SizedBox(
                   width: 30.0,
                 ),
@@ -35,14 +35,14 @@ class BestSellerItem extends StatelessWidget {
                     children: [
                       //book title
                       BestSellerItemTitle(
-                        title: book.volumeInfo!.title!,
+                        title: book.volumeInfo.title!,
                       ),
                       const SizedBox(
                         height: 3.0,
                       ),
                       //author name
                       Text(
-                        book.volumeInfo!.authors![0],
+                        book.volumeInfo.authors![0],
                         style: Styles.text14,
                       ),
                       const SizedBox(
@@ -58,8 +58,8 @@ class BestSellerItem extends StatelessWidget {
                           const Spacer(),
                           //book rating
                           BookRating(
-                            rate: book.volumeInfo!.averageRating ?? '-',
-                            count: book.volumeInfo!.ratingsCount ?? 0,
+                            rate: book.volumeInfo.averageRating ?? '-',
+                            count: book.volumeInfo.ratingsCount ?? 0,
                           ),
                         ],
                       )
