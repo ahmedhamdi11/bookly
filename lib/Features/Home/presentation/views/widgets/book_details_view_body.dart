@@ -38,7 +38,9 @@ class BookDetailsViewBody extends StatelessWidget {
           ),
 
           //book actions (buy,free previw)button
-          const BookActions(),
+          BookActions(
+            book: book,
+          ),
           const SizedBox(
             height: 48.0,
           ),
