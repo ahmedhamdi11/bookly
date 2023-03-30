@@ -1,5 +1,6 @@
 import 'package:bookly/Features/Home/presentation/manager/cubit/similar_books_cubit/similar_books_cubit.dart';
 import 'package:bookly/Features/Home/presentation/views/widgets/similar_books_item.dart';
+import 'package:bookly/Features/Home/presentation/views/widgets/similar_books_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -30,7 +31,7 @@ class SimilarBooks extends StatelessWidget {
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     physics: const BouncingScrollPhysics(),
-                    itemCount: 20,
+                    itemCount: state.book.length,
                     itemBuilder: (context, index) => SimilarBooksItem(
                       imageUrl:
                           state.book[index].volumeInfo.imageLinks?.thumbnail,
@@ -40,7 +41,7 @@ class SimilarBooks extends StatelessWidget {
               } else if (state is SimilarBooksFailureState) {
                 return Text(state.errMessage);
               } else {
-                return Text('loading');
+                return const SimilarBooksShimmer();
               }
             },
           ),
