@@ -35,14 +35,14 @@ class BestSellerItem extends StatelessWidget {
                     children: [
                       //book title
                       BestSellerItemTitle(
-                        title: book.volumeInfo.title!,
+                        title: book.volumeInfo.title ?? '',
                       ),
                       const SizedBox(
                         height: 3.0,
                       ),
                       //author name
                       Text(
-                        book.volumeInfo.authors![0],
+                        book.volumeInfo.authors?[0] ?? '',
                         style: Styles.text14,
                       ),
                       const SizedBox(
