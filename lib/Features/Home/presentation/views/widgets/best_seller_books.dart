@@ -1,5 +1,6 @@
 import 'package:bookly/Features/Home/presentation/manager/newest_books_cubit/newest_books_cubit.dart';
 import 'package:bookly/Features/Home/presentation/views/widgets/best_seller_item.dart';
+import 'package:bookly/Features/Home/presentation/views/widgets/newest_books_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,9 +23,7 @@ class BestSellerBooks extends StatelessWidget {
         } else if (state is NewestBooksFailureState) {
           return Text(state.errMessage);
         } else {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
+          return const NewestBooksShimmer();
         }
       },
     );
