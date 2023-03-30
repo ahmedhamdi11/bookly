@@ -1,11 +1,12 @@
+import 'package:bookly/Features/Home/data/models/book_model/book_model.dart';
 import 'package:bookly/Features/Home/presentation/views/widgets/book_details_view_body.dart';
 import 'package:bookly/Features/Home/presentation/views/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class BookDetailsView extends StatelessWidget {
-  const BookDetailsView({super.key});
-
+  const BookDetailsView({super.key, required this.book});
+  final BookModel book;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +18,9 @@ class BookDetailsView extends StatelessWidget {
                 GoRouter.of(context).pop();
               },
               icon: const Icon(Icons.close))),
-      body: const BookDetailsViewBody(),
+      body: BookDetailsViewBody(
+        book: book,
+      ),
     );
   }
 }

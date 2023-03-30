@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class BookRating extends StatelessWidget {
   const BookRating({super.key, this.rate, required this.count});
   final dynamic rate;
-  final int count;
+  final int? count;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -19,14 +19,14 @@ class BookRating extends StatelessWidget {
           width: 3.0,
         ),
         Text(
-          '$rate',
+          rate == null ? '-' : '$rate',
           style: Styles.text16,
         ),
         const SizedBox(
           width: 9.0,
         ),
         Text(
-          '($count)',
+          count == null ? '0' : '($count)',
           style: Styles.text14,
         )
       ],

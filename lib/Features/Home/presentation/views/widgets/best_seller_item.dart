@@ -16,7 +16,7 @@ class BestSellerItem extends StatelessWidget {
       padding: const EdgeInsets.only(left: 24.0, right: 24.0, bottom: 24.0),
       child: InkWell(
         onTap: () {
-          GoRouter.of(context).push(AppRouter.bookDetailsViewPath);
+          GoRouter.of(context).push(AppRouter.bookDetailsViewPath, extra: book);
         },
         child: SizedBox(
             height: 125,
@@ -58,8 +58,8 @@ class BestSellerItem extends StatelessWidget {
                           const Spacer(),
                           //book rating
                           BookRating(
-                            rate: book.volumeInfo.averageRating ?? '-',
-                            count: book.volumeInfo.ratingsCount ?? 0,
+                            rate: book.volumeInfo.averageRating,
+                            count: book.volumeInfo.ratingsCount,
                           ),
                         ],
                       )

@@ -1,3 +1,4 @@
+import 'package:bookly/Features/Home/data/models/book_model/book_model.dart';
 import 'package:bookly/Features/Home/presentation/views/widgets/book_actions.dart';
 import 'package:bookly/Features/Home/presentation/views/widgets/book_details.dart';
 import 'package:bookly/Features/Home/presentation/views/widgets/book_image.dart';
@@ -5,8 +6,8 @@ import 'package:bookly/Features/Home/presentation/views/widgets/similar_books.da
 import 'package:flutter/material.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
-  const BookDetailsViewBody({super.key});
-
+  const BookDetailsViewBody({super.key, required this.book});
+  final BookModel book;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -20,9 +21,8 @@ class BookDetailsViewBody extends StatelessWidget {
           //book image
           SizedBox(
             width: MediaQuery.of(context).size.width * 0.45,
-            child: const BookImage(
-              imageUrl:
-                  'https://cor-cdn-static.bibliocommons.com/assets/default_covers/icon-book-93409e4decdf10c55296c91a97ac2653.png',
+            child: BookImage(
+              imageUrl: book.volumeInfo.imageLinks?.thumbnail,
             ),
           ),
           const SizedBox(
@@ -30,7 +30,9 @@ class BookDetailsViewBody extends StatelessWidget {
           ),
 
           //book details (title,author,rating)
-          const BookDetails(),
+          BookDetails(
+            book: book,
+          ),
           const SizedBox(
             height: 37.0,
           ),
