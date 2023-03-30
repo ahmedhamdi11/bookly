@@ -8,9 +8,9 @@ part 'similar_books_state.dart';
 class SimilarBooksCubit extends Cubit<SimilarBooksState> {
   SimilarBooksCubit(this.homeRepo) : super(SimilarBooksInitial());
   final HomeRepo homeRepo;
-  Future fetchSimilarBooks() async {
+  Future fetchSimilarBooks({required String category}) async {
     emit(SimilarBooksLoadingState());
-    var result = await homeRepo.fetchNewestBooks();
+    var result = await homeRepo.fetchSimilarBooks(category: category);
     result.fold((failure) {
       emit(SimilarBooksFailureState(failure.errorMessage));
     }, (books) {

@@ -4,6 +4,7 @@ import 'package:bookly/core/utile/api_service.dart';
 import 'package:dartz/dartz.dart';
 import 'package:bookly/core/errors/failures.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 
 class HomeRepoImpl implements HomeRepo {
   final ApiServices apiServices;
@@ -51,11 +52,11 @@ class HomeRepoImpl implements HomeRepo {
 
   @override
   Future<Either<Failure, List<BookModel>>> fetchSimilarBooks(
-      String category) async {
+      {required String category}) async {
     try {
       var data = await apiServices.get(
           endPoint:
-              'volumes?q=$category:programming&Sorting=relevance &Filtering=free-ebooks&maxResults=40');
+              'volumes?q=subject:$category&Sorting=relevance &Filtering=free-ebooks&maxResults=40');
       List<BookModel> featuredBooks = [];
       for (var item in data['items']) {
         featuredBooks.add(BookModel.fromJson(item));

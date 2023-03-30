@@ -31,7 +31,10 @@ class SimilarBooks extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     physics: const BouncingScrollPhysics(),
                     itemCount: 20,
-                    itemBuilder: (context, index) => const SimilarBooksItem(),
+                    itemBuilder: (context, index) => SimilarBooksItem(
+                      imageUrl:
+                          state.book[index].volumeInfo.imageLinks?.thumbnail,
+                    ),
                   ),
                 );
               } else if (state is SimilarBooksFailureState) {
