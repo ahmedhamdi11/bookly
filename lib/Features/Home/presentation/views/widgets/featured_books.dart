@@ -22,8 +22,8 @@ class FeaturedBooks extends StatelessWidget {
                 physics: const BouncingScrollPhysics(),
                 itemCount: state.books.length,
                 itemBuilder: (context, index) => FeaturedBookItem(
-                    imageUrl:
-                        state.books[index].volumeInfo.imageLinks?.thumbnail),
+                  book: state.books[index],
+                ),
               ),
             ),
           );
