@@ -1,4 +1,4 @@
-import 'package:bookly/Features/Home/data/models/book_model/book_model.dart';
+import 'package:bookly/core/models/book_model/book_model.dart';
 import 'package:bookly/Features/Home/data/repos/home_repo.dart';
 import 'package:bookly/core/utile/api_service.dart';
 import 'package:dartz/dartz.dart';
