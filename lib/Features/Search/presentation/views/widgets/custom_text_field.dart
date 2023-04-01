@@ -4,20 +4,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomTextfied extends StatelessWidget {
   const CustomTextfied({super.key});
-
+  final InputBorder border =
+      const OutlineInputBorder(borderSide: BorderSide(color: Colors.grey));
   @override
   Widget build(BuildContext context) {
     return TextField(
+      autofocus: true,
       onChanged: (value) {
         BlocProvider.of<SearchCubit>(context).fetchSearchResults(search: value);
       },
       decoration: InputDecoration(
-        border: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey)),
-        enabledBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey)),
-        focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey)),
+        border: border,
+        enabledBorder: border,
+        focusedBorder: border,
         suffixIcon: IconButton(
           onPressed: () {},
           icon: const Icon(
