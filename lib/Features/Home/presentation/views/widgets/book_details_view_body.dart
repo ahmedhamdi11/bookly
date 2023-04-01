@@ -1,3 +1,4 @@
+import 'package:bookly/Features/Home/presentation/views/widgets/book_desc.dart';
 import 'package:bookly/core/models/book_model/book_model.dart';
 import 'package:bookly/Features/Home/presentation/views/widgets/book_actions.dart';
 import 'package:bookly/Features/Home/presentation/views/widgets/book_details.dart';
@@ -29,7 +30,7 @@ class BookDetailsViewBody extends StatelessWidget {
             height: 40.0,
           ),
 
-          //book details (title,author,rating)
+          //book (title,author,rating)
           BookDetails(
             book: book,
           ),
@@ -42,7 +43,12 @@ class BookDetailsViewBody extends StatelessWidget {
             book: book,
           ),
           const SizedBox(
-            height: 48.0,
+            height: 46.0,
+          ),
+
+          //book desc
+          BookDesc(
+            book: book,
           ),
 
           //similar books (title,BookslistView)
