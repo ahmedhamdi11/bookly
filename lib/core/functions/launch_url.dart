@@ -4,7 +4,7 @@ Future<void> openURl({required String? url}) async {
   if (url != null) {
     Uri uri = Uri.parse(url);
     if (await canLaunchUrl(uri)) {
-      await launchUrl(uri);
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
     }
   }
 }
