@@ -1,4 +1,4 @@
-import 'package:bookly/Features/Search/presentation/views/widgets/custom_text_field.dart';
+import 'package:bookly/Features/Search/presentation/views/widgets/search_view_body.dart';
 import 'package:flutter/material.dart';
 
 class SearchView extends StatelessWidget {
@@ -6,15 +6,6 @@ class SearchView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(children: const [
-            CustomTextfied(),
-          ]),
-        ),
-      ),
-    );
+    return const Scaffold(body: SearchViewBody());
   }
 }
