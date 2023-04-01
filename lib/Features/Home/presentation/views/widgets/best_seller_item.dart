@@ -50,19 +50,21 @@ class BestSellerItem extends StatelessWidget {
                       const SizedBox(
                         height: 6.0,
                       ),
+
+                      //book rating
                       Row(
                         children: [
-                          //book price
-                          Text(
-                            book.saleInfo?.saleability ?? 'unavailable',
-                            style: Styles.text16,
-                          ),
-                          const Spacer(),
-                          //book rating
                           BookRating(
                             rate: book.volumeInfo.averageRating,
                             count: book.volumeInfo.ratingsCount,
                           ),
+                          if (book.accessInfo?.pdf?.downloadLink != null)
+                            const Spacer(),
+                          if (book.accessInfo?.pdf?.downloadLink != null)
+                            Text(
+                              'pdf',
+                              style: Styles.text14,
+                            ),
                         ],
                       )
                     ],

@@ -15,13 +15,13 @@ class BookActions extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 38.0),
       child: Row(
         children: [
-          if (book.saleInfo!.saleability != 'NOT_FOR_SALE')
+          if (book.accessInfo?.pdf?.downloadLink != null)
             Expanded(
                 child: CustomButton(
               onPressed: () {
-                openURl(url: book.volumeInfo.canonicalVolumeLink);
+                openURl(url: book.accessInfo?.pdf?.downloadLink);
               },
-              btnText: 'get it',
+              btnText: 'download',
               backgroundColor: Colors.white,
               btnTextColor: Colors.black,
               borderRadius: const BorderRadius.only(
@@ -39,7 +39,7 @@ class BookActions extends StatelessWidget {
                       : 'preview',
                   backgroundColor: const Color(0xffEF8262),
                   btnTextColor: Colors.white,
-                  borderRadius: book.saleInfo!.saleability == 'NOT_FOR_SALE'
+                  borderRadius: book.accessInfo?.pdf?.downloadLink == null
                       ? BorderRadius.circular(16.0)
                       : const BorderRadius.only(
                           topRight: Radius.circular(16.0),
