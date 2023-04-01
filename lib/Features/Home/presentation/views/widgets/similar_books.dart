@@ -9,43 +9,46 @@ class SimilarBooks extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 30.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            'You can also like',
-            style: TextStyle(
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          const SizedBox(
-            height: 16.0,
-          ),
-          BlocBuilder<SimilarBooksCubit, SimilarBooksState>(
-            builder: (context, state) {
-              if (state is SimilarBooksSuccessState) {
-                return SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.15,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    physics: const BouncingScrollPhysics(),
-                    itemCount: state.book.length,
-                    itemBuilder: (context, index) => SimilarBooksItem(
-                      book: state.book[index],
+    return BlocBuilder<SimilarBooksCubit, SimilarBooksState>(
+      builder: (context, state) {
+        if (state is SimilarBooksSuccessState) {
+          return Padding(
+            padding: const EdgeInsets.only(left: 16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (state.book.isNotEmpty)
+                  const Text(
+                    'You can also like',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
-                );
-              } else if (state is SimilarBooksFailureState) {
-                return Text(state.errMessage);
-              } else {
-                return const SimilarBooksShimmer();
-              }
-            },
-          ),
-        ],
-      ),
+                if (state.book.isNotEmpty)
+                  const SizedBox(
+                    height: 16.0,
+                  ),
+                if (state.book.isNotEmpty)
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.15,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: state.book.length,
+                      itemBuilder: (context, index) => SimilarBooksItem(
+                        book: state.book[index],
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          );
+        } else if (state is SimilarBooksFailureState) {
+          return Text(state.errMessage);
+        } else {
+          return const SimilarBooksShimmer();
+        }
+      },
     );
   }
 }
