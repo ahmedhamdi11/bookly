@@ -44,6 +44,8 @@ class BestSellerItem extends StatelessWidget {
                       Text(
                         book.volumeInfo.authors?[0] ?? '',
                         style: Styles.text14,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
                       const SizedBox(
                         height: 6.0,
@@ -51,9 +53,9 @@ class BestSellerItem extends StatelessWidget {
                       Row(
                         children: [
                           //book price
-                          const Text(
-                            'free',
-                            style: Styles.text20,
+                          Text(
+                            book.saleInfo?.saleability ?? 'unavailable',
+                            style: Styles.text16,
                           ),
                           const Spacer(),
                           //book rating

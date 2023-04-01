@@ -20,15 +20,24 @@ class SearchViewBody extends StatelessWidget {
           BlocBuilder<SearchCubit, SearchState>(
             builder: (context, state) {
               if (state is SearchSuccessState) {
-                return Expanded(
-                  child: ListView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    itemCount: state.books.length,
-                    itemBuilder: (context, index) => BestSellerItem(
-                      book: state.books[index],
+                if (state.books.isEmpty) {
+                  return Center(
+                    child: Text(
+                      'No Results',
+                      style: Styles.text14,
                     ),
-                  ),
-                );
+                  );
+                } else {
+                  return Expanded(
+                    child: ListView.builder(
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: state.books.length,
+                      itemBuilder: (context, index) => BestSellerItem(
+                        book: state.books[index],
+                      ),
+                    ),
+                  );
+                }
               } else if (state is SearchFailureState) {
                 return Center(
                   child: Text(state.errMessage),

@@ -15,36 +15,36 @@ class BookActions extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 38.0),
       child: Row(
         children: [
+          if (book.saleInfo!.saleability != 'NOT_FOR_SALE')
+            Expanded(
+                child: CustomButton(
+              onPressed: () {
+                openURl(url: book.volumeInfo.canonicalVolumeLink);
+              },
+              btnText: 'get it',
+              backgroundColor: Colors.white,
+              btnTextColor: Colors.black,
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(16.0),
+                bottomLeft: Radius.circular(16.0),
+              ),
+            )),
           Expanded(
               child: CustomButton(
-            onPressed: () {
-              openURl(url: book.accessInfo?.pdf?.acsTokenLink);
-            },
-            btnText: book.accessInfo?.pdf?.acsTokenLink == null
-                ? 'unavailable'
-                : 'download',
-            backgroundColor: Colors.white,
-            btnTextColor: Colors.black,
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(16.0),
-              bottomLeft: Radius.circular(16.0),
-            ),
-          )),
-          Expanded(
-              child: CustomButton(
-            onPressed: () async {
-              openURl(url: book.volumeInfo.previewLink);
-            },
-            btnText: book.volumeInfo.previewLink == null
-                ? 'preview unavailable'
-                : 'preview',
-            backgroundColor: const Color(0xffEF8262),
-            btnTextColor: Colors.white,
-            borderRadius: const BorderRadius.only(
-              topRight: Radius.circular(16.0),
-              bottomRight: Radius.circular(16.0),
-            ),
-          )),
+                  onPressed: () async {
+                    openURl(url: book.volumeInfo.previewLink);
+                  },
+                  btnText: book.volumeInfo.previewLink == null
+                      ? 'preview unavailable'
+                      : 'preview',
+                  backgroundColor: const Color(0xffEF8262),
+                  btnTextColor: Colors.white,
+                  borderRadius: book.saleInfo!.saleability == 'NOT_FOR_SALE'
+                      ? BorderRadius.circular(16.0)
+                      : const BorderRadius.only(
+                          topRight: Radius.circular(16.0),
+                          bottomRight: Radius.circular(16.0),
+                        ))),
         ],
       ),
     );
