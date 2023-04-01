@@ -13,21 +13,23 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar(
-        title: SvgPicture.asset(
-          AssetsData.logo,
-          width: 75,
-          height: 18.1,
-        ),
-        actionOne: IconButton(
-            onPressed: () {
-              GoRouter.of(context).push(AppRouter.searchViewPath);
-            },
-            icon: SvgPicture.asset(
-              AssetsData.searchIcon,
-              width: 25,
-              height: 25,
-            )),
-      ),
+          title: SvgPicture.asset(
+            AssetsData.logo,
+            width: 75,
+            height: 18.1,
+          ),
+          actions: [
+            IconButton(
+              onPressed: () {
+                GoRouter.of(context).push(AppRouter.searchViewPath);
+              },
+              icon: SvgPicture.asset(
+                AssetsData.searchIcon,
+                width: 25,
+                height: 25,
+              ),
+            ),
+          ]),
       body: const HomeViewBody(),
     );
   }

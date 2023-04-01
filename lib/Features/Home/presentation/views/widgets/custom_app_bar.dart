@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 
 PreferredSizeWidget customAppBar(
-    {required Widget actionOne, required Widget title}) {
+    {List<Widget>? actions, required Widget title}) {
   return AppBar(
     automaticallyImplyLeading: false,
     backgroundColor: Colors.transparent,
     elevation: 0,
     title: title,
-    actions: [
-      actionOne,
-      const SizedBox(
-        width: 12.0,
-      )
-    ],
+    actions: actions,
   );
 }

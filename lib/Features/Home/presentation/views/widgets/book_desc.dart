@@ -1,4 +1,3 @@
-import 'package:bookly/constants.dart';
 import 'package:bookly/core/models/book_model/book_model.dart';
 import 'package:bookly/core/utile/styles.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +9,7 @@ class BookDesc extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 32.0),
-      padding: EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(16.0),
       width: double.infinity,
       decoration: BoxDecoration(
         color: Colors.grey.withOpacity(0.08),
@@ -19,6 +18,7 @@ class BookDesc extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          //desc
           const Text(
             'description:',
             style: Styles.text16,
@@ -30,6 +30,8 @@ class BookDesc extends StatelessWidget {
           const SizedBox(
             height: 6.0,
           ),
+
+          //language
           const Text(
             'language:',
             style: Styles.text16,
@@ -41,6 +43,8 @@ class BookDesc extends StatelessWidget {
           const SizedBox(
             height: 6.0,
           ),
+
+          //publisher
           const Text(
             'publisher:',
             style: Styles.text16,
@@ -53,6 +57,8 @@ class BookDesc extends StatelessWidget {
           const SizedBox(
             height: 6.0,
           ),
+
+          //publish date
           const Text(
             'published at:',
             style: Styles.text16,

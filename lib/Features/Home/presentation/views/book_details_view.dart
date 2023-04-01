@@ -27,8 +27,6 @@ class _BookDetailsViewState extends State<BookDetailsView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar(
-          actionOne: IconButton(
-              onPressed: () {}, icon: const Icon(Icons.shopping_cart_outlined)),
           title: IconButton(
               onPressed: () {
                 GoRouter.of(context).pop();
