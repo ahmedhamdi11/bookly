@@ -33,8 +33,7 @@ class SimilarBooks extends StatelessWidget {
                     physics: const BouncingScrollPhysics(),
                     itemCount: state.book.length,
                     itemBuilder: (context, index) => SimilarBooksItem(
-                      imageUrl:
-                          state.book[index].volumeInfo.imageLinks?.thumbnail,
+                      book: state.book[index],
                     ),
                   ),
                 );
