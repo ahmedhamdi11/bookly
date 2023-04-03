@@ -19,59 +19,64 @@ class BestSellerItem extends StatelessWidget {
           GoRouter.of(context).push(AppRouter.bookDetailsViewPath, extra: book);
         },
         child: SizedBox(
-            height: 125,
-            child: Row(
-              children: [
-                BookImage(
-                    borderRadius: 8.0,
-                    imageUrl: book.volumeInfo.imageLinks?.thumbnail),
-                const SizedBox(
-                  width: 30.0,
-                ),
-                Expanded(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      //book title
-                      BestSellerItemTitle(
-                        title: book.volumeInfo.title ?? '',
-                      ),
-                      const SizedBox(
-                        height: 3.0,
-                      ),
-                      //author name
-                      Text(
-                        book.volumeInfo.authors?[0] ?? '',
-                        style: Styles.text14,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      const SizedBox(
-                        height: 6.0,
-                      ),
+          height: 125,
+          child: Row(
+            children: [
+              //book image
+              BookImage(
+                  borderRadius: 8.0,
+                  imageUrl: book.volumeInfo.imageLinks?.thumbnail),
+              const SizedBox(
+                width: 30.0,
+              ),
 
-                      //book rating
-                      Row(
-                        children: [
-                          BookRating(
-                            rate: book.volumeInfo.averageRating,
-                            count: book.volumeInfo.ratingsCount,
+              //book details(title,author,rating)
+              Expanded(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    //book title
+                    BestSellerItemTitle(
+                      title: book.volumeInfo.title ?? '',
+                    ),
+                    const SizedBox(
+                      height: 3.0,
+                    ),
+
+                    //author name
+                    Text(
+                      book.volumeInfo.authors?[0] ?? '',
+                      style: Styles.text14,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const SizedBox(
+                      height: 6.0,
+                    ),
+
+                    //book rating
+                    Row(
+                      children: [
+                        BookRating(
+                          rate: book.volumeInfo.averageRating,
+                          count: book.volumeInfo.ratingsCount,
+                        ),
+                        if (book.accessInfo?.pdf?.downloadLink != null)
+                          const Spacer(),
+                        if (book.accessInfo?.pdf?.downloadLink != null)
+                          Text(
+                            'pdf',
+                            style: Styles.text14,
                           ),
-                          if (book.accessInfo?.pdf?.downloadLink != null)
-                            const Spacer(),
-                          if (book.accessInfo?.pdf?.downloadLink != null)
-                            Text(
-                              'pdf',
-                              style: Styles.text14,
-                            ),
-                        ],
-                      )
-                    ],
-                  ),
-                )
-              ],
-            )),
+                      ],
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }

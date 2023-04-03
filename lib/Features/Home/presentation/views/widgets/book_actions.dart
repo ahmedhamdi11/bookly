@@ -17,34 +17,35 @@ class BookActions extends StatelessWidget {
         children: [
           if (book.accessInfo?.pdf?.downloadLink != null)
             Expanded(
-                child: CustomButton(
-              onPressed: () {
-                openURl(url: book.accessInfo?.pdf?.downloadLink);
-              },
-              btnText: 'download',
-              backgroundColor: Colors.white,
-              btnTextColor: Colors.black,
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(16.0),
-                bottomLeft: Radius.circular(16.0),
-              ),
-            )),
-          Expanded(
               child: CustomButton(
-                  onPressed: () async {
-                    openURl(url: book.volumeInfo.previewLink);
-                  },
-                  btnText: book.volumeInfo.previewLink == null
-                      ? 'preview unavailable'
-                      : 'preview',
-                  backgroundColor: const Color(0xffEF8262),
-                  btnTextColor: Colors.white,
-                  borderRadius: book.accessInfo?.pdf?.downloadLink == null
-                      ? BorderRadius.circular(16.0)
-                      : const BorderRadius.only(
-                          topRight: Radius.circular(16.0),
-                          bottomRight: Radius.circular(16.0),
-                        ))),
+                onPressed: () {
+                  openURl(url: book.accessInfo?.pdf?.downloadLink);
+                },
+                btnText: 'download',
+                backgroundColor: Colors.white,
+                btnTextColor: Colors.black,
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(16.0),
+                  bottomLeft: Radius.circular(16.0),
+                ),
+              ),
+            ),
+          Expanded(
+            child: CustomButton(
+              onPressed: () async {
+                openURl(url: book.volumeInfo.previewLink);
+              },
+              btnText: book.volumeInfo.previewLink == null
+                  ? 'preview unavailable'
+                  : 'preview',
+              borderRadius: book.accessInfo?.pdf?.downloadLink == null
+                  ? BorderRadius.circular(16.0)
+                  : const BorderRadius.only(
+                      topRight: Radius.circular(16.0),
+                      bottomRight: Radius.circular(16.0),
+                    ),
+            ),
+          ),
         ],
       ),
     );

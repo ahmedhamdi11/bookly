@@ -20,28 +20,29 @@ class FailureUi extends StatelessWidget {
           Lottie.asset('assets/lotties/error.json',
               width: MediaQuery.of(context).size.width * 0.6),
           SizedBox(
-              width: MediaQuery.of(context).size.width * 0.6,
-              child: Text(
-                errMessage,
-                textAlign: TextAlign.center,
-              )),
+            width: MediaQuery.of(context).size.width * 0.6,
+            child: Text(
+              errMessage,
+              textAlign: TextAlign.center,
+            ),
+          ),
           const SizedBox(
             height: 32.0,
           ),
           CustomButton(
-            onPressed: () {
-              BlocProvider.of<NewestBooksCubit>(context).fetchNewestBooks();
-              BlocProvider.of<FeaturedBooksCubit>(context).fetchFeaturedBooks();
-            },
+            onPressed: () => reloadHomeViewData(context),
             btnText: 'try again',
-            backgroundColor: const Color(0xffEF8262),
-            btnTextColor: Colors.white,
           ),
           const SizedBox(
             height: 40,
-          )
+          ),
         ],
       ),
     );
+  }
+
+  void reloadHomeViewData(BuildContext context) {
+    BlocProvider.of<NewestBooksCubit>(context).fetchNewestBooks();
+    BlocProvider.of<FeaturedBooksCubit>(context).fetchFeaturedBooks();
   }
 }

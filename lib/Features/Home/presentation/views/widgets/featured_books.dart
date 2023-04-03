@@ -28,7 +28,7 @@ class FeaturedBooks extends StatelessWidget {
             ),
           );
         } else if (state is FeaturedBooksFailureState) {
-          return Text('err:${state.errMessage}');
+          return Center(child: Text(state.errMessage));
         } else {
           return const FeaturedBooksShimmer();
         }

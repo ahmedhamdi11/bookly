@@ -1,12 +1,13 @@
+import 'package:bookly/core/utile/styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
     required this.btnText,
-    required this.backgroundColor,
+    this.backgroundColor = const Color(0xffEF8262),
     this.borderRadius,
-    required this.btnTextColor,
+    this.btnTextColor = Colors.white,
     this.onPressed,
   });
   final String btnText;
@@ -22,13 +23,12 @@ class CustomButton extends StatelessWidget {
         style: TextButton.styleFrom(
             backgroundColor: backgroundColor,
             shape: RoundedRectangleBorder(
-              borderRadius: borderRadius ?? BorderRadius.circular(16.0),
+              borderRadius: borderRadius ?? BorderRadius.circular(12.0),
             )),
         onPressed: onPressed,
         child: Text(
           btnText,
-          style: TextStyle(
-              color: btnTextColor, fontSize: 16, fontWeight: FontWeight.bold),
+          style: Styles.text16.copyWith(color: btnTextColor),
         ),
       ),
     );
