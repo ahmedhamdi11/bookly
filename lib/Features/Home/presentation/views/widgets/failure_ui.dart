@@ -1,5 +1,6 @@
 import 'package:bookly/Features/Home/presentation/manager/cubit/featured_books_cubit/featured_books_cubit.dart';
 import 'package:bookly/Features/Home/presentation/manager/cubit/newest_books_cubit/newest_books_cubit.dart';
+import 'package:bookly/core/utile/styles.dart';
 import 'package:bookly/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,6 +25,7 @@ class FailureUi extends StatelessWidget {
             child: Text(
               errMessage,
               textAlign: TextAlign.center,
+              style: Styles.text14,
             ),
           ),
           const SizedBox(
