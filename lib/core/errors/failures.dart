@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 
 abstract class Failure {
@@ -27,7 +29,12 @@ class ServerFailure extends Failure {
       case DioErrorType.connectionError:
         return ServerFailure('Connection Error,please try again!');
       case DioErrorType.unknown:
-        return ServerFailure('unKnown Error,please try again!');
+        if (dioError.error is SocketException) {
+          return ServerFailure(
+              'No Internet Connection, please check your internet and try again');
+        } else {
+          return ServerFailure('Opps There Was An Error, please try again!');
+        }
 
       default:
         return ServerFailure('Opps There Was An Error, please try again!');
