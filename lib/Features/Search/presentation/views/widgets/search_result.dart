@@ -3,6 +3,7 @@ import 'package:bookly/Features/Search/presentation/views/widgets/results_listvi
 import 'package:bookly/core/utile/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 
 class SearchResult extends StatelessWidget {
   const SearchResult({super.key});
@@ -25,8 +26,27 @@ class SearchResult extends StatelessWidget {
             );
           }
         } else if (state is SearchFailureState) {
-          return Center(
-            child: Text(state.errMessage),
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Column(
+                children: [
+                  Text(
+                    state.errMessage,
+                    style: Styles.text14,
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  Lottie.asset(
+                    'assets/lotties/error.json',
+                    width: MediaQuery.of(context).size.width * 0.5,
+                  ),
+                ],
+              ),
+            ),
           );
         } else if (state is SearchLoadingState) {
           return const Padding(
@@ -34,11 +54,9 @@ class SearchResult extends StatelessWidget {
             child: LinearProgressIndicator(),
           );
         } else {
-          return Center(
-            child: Text(
-              'Search for any book',
-              style: Styles.text14,
-            ),
+          return Text(
+            'Search for any book',
+            style: Styles.text14,
           );
         }
       },
